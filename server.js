@@ -80,7 +80,7 @@ ensureAdmin();
 app.post('/register', async (req, res) => {
   const { studentId, nickname, password } = req.body;
   if (studentId === 'admin') return res.status(400).json({ error: 'Cannot register as admin' });
-  if (!/^680710\d{3}$/.test(studentId)) return res.status(400).json({ error: 'Invalid studentId' });
+  if (!/^6[0-9]0710\d{3}$/.test(studentId)) return res.status(400).json({ error: 'Invalid studentId' });
   if (!nickname || !password) return res.status(400).json({ error: 'Missing fields' });
   try {
     const hash = await bcrypt.hash(password, 10);
